@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  meilisearch:
+    image: getmeili/meilisearch:v1.1.1
+    container_name: meilisearch
+    restart: unless-stopped
+    ports:
+      - "7700:7700"   # Expose MeiliSearch API port
+    environment:
+      MEILI_MASTER_KEY: "masterKey123"  # Set your master key
+      MEILI_ENV: "development"          # Optional: development or production
+    volumes:
+      - meili_data:/meili_data          # Persist data
+
+volumes:
+  meili_data:
